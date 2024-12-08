@@ -1,11 +1,14 @@
 Web Scraper Tool
+
 A Python-based tool with a sleek frontend built using HTML and CSS. Easily scrape the inner text of any website by simply entering its URL. This tool is user-friendly and requires no coding knowledge!
 
 Features
+
 🌐 Website Scraping: Extract the inner text of any website with just a URL.
 🖼️ Simple Interface: Intuitive design powered by HTML and CSS.
 ⚡ Python Backend: Handles the scraping efficiently.
 🔒 Privacy First: Your data is processed securely and never stored.
+
 Live Demo
 Check out the tool in action: https://webscraper-ebon.vercel.app/
 
