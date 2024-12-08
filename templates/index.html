@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Scraper</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f8;
+            color: #333;
+        }
+
+        /* Header section */
+        header {
+            background-color: #6C5B7B;
+            color: white;
+            padding: 25px 0;
+            text-align: center;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 36px;
+            letter-spacing: 1px;
+        }
+
+        /* Footer section */
+        footer {
+            background-color: #6C5B7B;
+            color: white;
+            padding: 12px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 14px;
+        }
+
+        /* Main container for the app */
+        .container {
+            margin: 50px auto;
+            padding: 20px;
+            width: 90%;
+            max-width: 850px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #444;
+        }
+
+        /* Input search box styling */
+        .search-box {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            background-color: #f7fafc;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #6C5B7B;
+        }
+
+        /* Button styling */
+        .btn {
+            padding: 14px;
+            background-color: #6C5B7B;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #5a4e67;
+        }
+
+        /* Content area styling */
+        .content {
+            margin-top: 20px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-height: 400px;
+            overflow-y: auto;
+            padding: 15px;
+            background-color: #f7fafc;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+        }
+
+        /* Copy button styling */
+        .copy-btn {
+            margin-top: 15px;
+            padding: 12px;
+            background-color: #38A1DB;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background-color: #4D89A3;
+        }
+
+        /* Responsive design for smaller screens */
+        @media (max-width: 600px) {
+            .container {
+                width: 95%;
+                margin-top: 30px;
+            }
+
+            header h1 {
+                font-size: 30px;
+            }
+
+            footer {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Web Scraper</h1>
+</header>
+
+<div class="container">
+    <h2>Scrape a Website</h2>
+    <form method="POST">
+        <input type="text" name="url" class="search-box" placeholder="Enter website URL" required>
+        <button type="submit" class="btn">Scrape</button>
+    </form>
+
+    {% if content %}
+    <h3>Extracted Content:</h3>
+    <div class="content" id="contentArea">
+        <p>{{ content }}</p>
+    </div>
+    <button class="copy-btn" onclick="copyContent()">Copy Content</button>
+    {% endif %}
+</div>
+
+<footer>
+    <p>&copy; 2024 Mani Bharadwaj</p>
+</footer>
+
+<script>
+    function copyContent() {
+        const contentArea = document.getElementById('contentArea');
+        const range = document.createRange();
+        range.selectNode(contentArea);
+        window.getSelection().removeAllRanges(); // Clear current selection
+        window.getSelection().addRange(range); // Select the content
+        try {
+            document.execCommand('copy');
+            alert("Content copied to clipboard!");
+        } catch (err) {
+            alert("Failed to copy content");
+        }
+        window.getSelection().removeAllRanges(); // Deselect the content
+    }
+</script>
+
+</body>
+</html>
